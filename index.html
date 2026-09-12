@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Little Gift</title>
+
+    <link rel="stylesheet" href="SAMPLE.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HOME
+    ========================== -->
+
+    <section id="home" class="screen active">
+
+        <div class="home-content">
+
+            <div class="gift-icon">🎁</div>
+
+            <h1 class="home-title">
+                A Little <span>Gift</span>
+            </h1>
+
+            <p class="home-description">
+                Create something meaningful for someone special,
+                or open a gift that was made just for you.
+            </p>
+
+            <div class="home-buttons">
+
+                <button
+                    class="main-btn create-btn"
+                    onclick="showScreen('occasion')">
+
+                    🎁 Create Your Gift Here
+
+                </button>
+
+                <button
+                    class="main-btn receive-btn"
+                    onclick="showScreen('receive')">
+
+                    💌 Received Your Gift Here
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         OCCASION SELECTION
+    ========================== -->
+
+    <section id="occasion" class="screen">
+
+        <div class="container">
+
+            <button
+                class="back-btn"
+                onclick="showScreen('home')">
+
+                ← Back
+
+            </button>
+
+            <h2 class="section-title">
+                What is the occasion?
+            </h2>
+
+            <p class="section-subtitle">
+                Choose the kind of gift you want to create.
+            </p>
+
+            <div class="occasion-grid">
+
+                <!-- Birthday -->
+
+                <div
+                    class="occasion-card"
+                    onclick="showScreen('birthday')">
+
+                    <div class="occasion-icon">
+                        🎂
+                    </div>
+
+                    <h3>Birthday</h3>
+
+                    <p>
+                        Celebrate someone's special day
+                        with a personal message.
+                    </p>
+
+                </div>
+
+
+                <!-- Anniversary -->
+
+                <div
+                    class="occasion-card"
+                    onclick="comingSoon('Anniversary')">
+
+                    <div class="occasion-icon">
+                        💍
+                    </div>
+
+                    <h3>Anniversary</h3>
+
+                    <p>
+                        Create a meaningful memory
+                        for your special someone.
+                    </p>
+
+                </div>
+
+
+                <!-- Just Because -->
+
+                <div
+                    class="occasion-card"
+                    onclick="comingSoon('Just Because')">
+
+                    <div class="occasion-icon">
+                        🌷
+                    </div>
+
+                    <h3>Just Because</h3>
+
+                    <p>
+                        Give someone a surprise
+                        for absolutely no reason.
+                    </p>
+
+                </div>
+
+
+                <!-- Valentine's -->
+
+                <div
+                    class="occasion-card"
+                    onclick="comingSoon('Valentine’s')">
+
+                    <div class="occasion-icon">
+                        ❤️
+                    </div>
+
+                    <h3>Valentine's</h3>
+
+                    <p>
+                        Share something sweet
+                        with someone you love.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         BIRTHDAY CREATOR
+    ========================== -->
+
+    <section id="birthday" class="screen">
+
+        <div class="container">
+
+            <button
+                class="back-btn"
+                onclick="showScreen('occasion')">
+
+                ← Back
+
+            </button>
+
+            <h2 class="section-title">
+                Create a Birthday Gift 🎂
+            </h2>
+
+            <p class="section-subtitle">
+                Add a photo, voice message, and heartfelt letter.
+            </p>
+
+
+            <div class="form-card">
+
+
+                <!-- PHOTO -->
+
+                <div class="form-group">
+
+                    <label>
+                        📸 Add a Photo
+                    </label>
+
+                    <div class="upload-box">
+
+                        <input
+                            type="file"
+                            id="photoInput"
+                            accept="image/*">
+
+                        <label
+                            for="photoInput"
+                            class="upload-label">
+
+                            Choose Photo
+
+                        </label>
+
+                        <p class="form-help">
+                            Choose a special photo to include
+                            in the gift.
+                        </p>
+
+                        <div
+                            id="photoPreview"
+                            class="photo-preview">
+
+                            <img
+                                id="previewImage"
+                                alt="Photo preview">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- VOICE -->
+
+                <div class="form-group">
+
+                    <label>
+                        🎙️ Record a Voice Message
+                    </label>
+
+                    <div class="voice-recorder">
+
+                        <button
+                            id="recordBtn"
+                            class="record-btn"
+                            onclick="toggleRecording()">
+
+                            🎙️
+
+                        </button>
+
+                        <p
+                            id="recordStatus"
+                            class="record-status">
+
+                            Click the microphone to start recording.
+
+                        </p>
+
+                        <audio
+                            id="audioPreview"
+                            controls>
+                        </audio>
+
+                    </div>
+
+                </div>
+
+
+                <!-- LETTER -->
+
+                <div class="form-group">
+
+                    <label>
+                        💌 Write Your Letter
+                    </label>
+
+                    <textarea
+                        id="letterInput"
+                        placeholder="Write something from your heart...">
+                    </textarea>
+
+                    <p class="form-help">
+                        This message will appear inside the recipient's gift.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="submit-btn"
+                    onclick="createGift()">
+
+                    ✨ Create My Gift Link
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         GENERATED LINK
+    ========================== -->
+
+    <section id="generated" class="screen">
+
+        <div class="container">
+
+            <div class="success-card">
+
+                <div class="success-icon">
+                    🎁
+                </div>
+
+                <h2>
+                    Your Gift is Ready!
+                </h2>
+
+                <p class="success-text">
+                    Your birthday gift has been created.
+                    Copy the link below and send it to your recipient.
+                </p>
+
+                <div class="link-box">
+
+                    <input
+                        type="text"
+                        id="generatedLink"
+                        readonly>
+
+                    <button
+                        class="copy-btn"
+                        onclick="copyLink()">
+
+                        Copy
+
+                    </button>
+
+                </div>
+
+                <p
+                    id="copyMessage"
+                    class="copy-message">
+
+                    Link copied! 💗
+
+                </p>
+
+                <button
+                    class="submit-btn"
+                    onclick="showScreen('home')">
+
+                    Back to Home
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         RECEIVE GIFT
+    ========================== -->
+
+    <section id="receive" class="screen">
+
+        <div class="container">
+
+            <button
+                class="back-btn"
+                onclick="showScreen('home')">
+
+                ← Back
+
+            </button>
+
+            <div class="receive-card">
+
+                <div class="receive-icon">
+                    💌
+                </div>
+
+                <h2>
+                    Receive Your Gift
+                </h2>
+
+                <p class="receive-description">
+                    Paste the gift link someone sent you.
+                </p>
+
+                <div class="form-group">
+
+                    <label>
+                        Gift Link
+                    </label>
+
+                    <input
+                        type="url"
+                        id="giftLinkInput"
+                        placeholder="Paste your gift link here">
+
+                </div>
+
+                <button
+                    class="submit-btn"
+                    onclick="openGift()">
+
+                    💝 Open My Gift
+
+                </button>
+
+                <p
+                    id="receiveError"
+                    class="receive-error">
+
+                    We couldn't find that gift.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         GIFT VIEW
+    ========================== -->
+
+    <section id="giftView" class="screen">
+
+        <div class="container">
+
+            <div class="gift-view">
+
+                <div class="heart">
+                    ♥
+                </div>
+
+                <h2>
+                    A Birthday Gift For You
+                </h2>
+
+
+                <!-- PHOTO -->
+
+                <img
+                    id="giftPhoto"
+                    class="gift-photo"
+                    alt="Birthday gift photo">
+
+
+                <!-- LETTER -->
+
+                <div
+                    id="giftLetter"
+                    class="letter">
+                </div>
+
+
+                <!-- VOICE -->
+
+                <div
+                    id="giftVoice"
+                    class="voice-section">
+
+                    <h3>
+                        🎙️ A Voice Message For You
+                    </h3>
+
+                    <audio
+                        id="giftAudio"
+                        controls>
+                    </audio>
+
+                </div>
+
+
+                <div class="gift-footer">
+
+                    <span class="heart">
+                        ♥
+                    </span>
+
+                    <p>
+                        Someone made this just for you.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="submit-btn"
+                    onclick="showScreen('home')">
+
+                    Back Home
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- JavaScript -->
+
+    <script src="SCRIPT.js"></script>
+
+</body>
+</html>
